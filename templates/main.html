@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>KU환학생</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="masthead">
+        <h3 class="text-muted">Project name</h3>
+
+        <nav class="navbar navbar-light bg-faded rounded mb-3">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-toggleable-md" id="navbarCollapse">
+            <ul class="nav navbar-nav text-md-center justify-content-md-between">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home_view' %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'inform_index' %}">Inform</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'board_index' %}">Board</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'schedule_index' %}">Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+              </li>              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MY</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  {% if user.is_authenticated %}
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                  {% endif %}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      {% block content %}
+      {% endblock content %}
+    </div> <!-- /container -->
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

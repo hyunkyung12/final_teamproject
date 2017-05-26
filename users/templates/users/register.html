@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>Register User</h2>
+        </div>
+        
+        <form id="register" class="form-horizontal" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="form-group">
+                <label class="col-sm-3 control-label">Username</label>
+                <div class="col-sm-6">
+                    {{ registerform.username }}
+                    <span class="field-error">
+                    {{ registerform.username.errors|striptags }}
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-6">
+                    {{ registerform.password1 }}
+                    <span class="field-error">
+                    {{ registerform.password1.errors|striptags }}
+                    </span>
+                </div>
+            </div>            
+            
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Password (again)</label>
+                <div class="col-sm-6">
+                    {{ registerform.password2 }}
+                    <span class="field-error">
+                    {{ registerform.password2.errors|striptags }}
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-12 text-center">
+                    <button class="btn btn-default" type="submit">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
