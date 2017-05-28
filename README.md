@@ -2,7 +2,7 @@
 
 ### c9 : https://ide.c9.io/hyunkyung12/final_teamproject
 
-### github : 
+### github : https://github.com/hyunkyung12/final_teamproject
 
 ## 1. 기능
 
@@ -21,7 +21,7 @@
 - 후기
 	- 생활
 	- 면접
-	- 자격
+
 
 - 게시판
 	- 게시글
@@ -96,7 +96,7 @@ http://dgkim5360.tistory.com/entry/django-model-inheritance 3. Proxy models
 
 ## 3. 외부파일
 - bootstrap4
-- 더 불러오는 경우 추가
+- python3
 
 ## 4. 규칙
 - html파일의 class이름은 앞에 model이름 꼭 붙이기 (충돌방지)

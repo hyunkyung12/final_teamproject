@@ -1,0 +1,55 @@
+{% extends "main.html" %}
+
+{% block content %}
+<a href="../">상위링크</a>
+
+<div class="inform-title">
+    <h1>파견학교목록</h1>
+</div>
+
+<div class="inform-text">
+    <h3>대상학교</h3>
+    <div class="inform-table">
+        <table>
+        {% for datum in data %}
+            <thead>
+                <tr>
+                    {% if datum.uni_nation %}
+                    <th>국가</th>
+                    {% endif %}
+                    
+                    {% if datum.uni_location %}
+                    <th>지역</th>
+                    {% endif %}
+                    
+                    <th>학교명</th>
+                    <th>어학조건</th>
+                    <th>선발인원</th>
+                    <th>파견학기</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% if datum.uni_nation %}
+                    <td>{{ datum.uni_nation }}</td>
+                    {% endif %}
+                    
+                    {% if datum.uni_location %}
+                    <td>{{ datum.uni_location }}</td>
+                    {% endif %}
+                    
+                    <td><a href="{{ datum.uni_number }}/">{{ datum.uni_name }}</a></td>
+                    <td>{{ datum.uni_language }}</td>
+                    <td>{{ datum.uni_people }}</td>
+                    <td>{{ datum.uni_term }}</td>
+                </tr>
+            </tbody>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="inform-text">
+    <h3>모집요강</h3>
+</div>
+{% endblock %}

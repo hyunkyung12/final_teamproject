@@ -34,7 +34,7 @@
                 <a class="nav-link" href="{% url 'inform_index' %}">Inform</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'board_index' %}">Board</a>
+                <a class="nav-link" href="{% url 'post_list' %}">Board</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'schedule_index' %}">Schedule</a>
@@ -45,8 +45,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MY</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  {% if user.is_authenticated %}                  
                   <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                  {% if user.is_authenticated %}
                   <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                   <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                   {% endif %}
