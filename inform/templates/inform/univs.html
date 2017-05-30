@@ -7,6 +7,13 @@
     <br/>
 </div>
 
+<style>
+        #map {
+            width: 40%;
+            height: 30%;
+            background-color: grey;
+        }
+</style>
 {% for datum in data %}
     <h1><img src="{{ datum.uni_logo }}" width="100" height="100">{{ datum.uni_name }}</h1>
     <div class="inform_map" id="map" style="float: left; margin-right: 10px;">
@@ -38,11 +45,24 @@
                 <th>링크</th>
                 <td><a href="{{ datum.uni_site }}">{{ datum.uni_site }}</a></td>
             </tr>
-            <tbody>
-            </tbody>
+            {% if datum.uni_qualification %}
+            <tr>
+                <th>파견조건</th>
+                <td>{{ datum.uni_qualification }}</td>
+            </tr>
+            {% endif %}
         </table>
     </div>
     <div style="clear:both;"></div>
+    
+    <div class="inform_title">
+        <br/>
+        <h3>주요전공</h3>
+    </div>
+    <div class="inform_text">
+        <p>{{ datum.uni_major }}</p>
+    </div>
+    
     <div class="inform_title">
         <br/>
         <h3>기타 / 비고</h3>

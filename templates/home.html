@@ -1,38 +1,14 @@
-{% extends "main.html" %} 
-{% load staticfiles %}
+{% extends "main.html" %}
 
 {% block content %}
-<div id="header-wrapper" class="header-slider">
-	<header class="clearfix">
-	<div class="logo">
-		<img src="{% static 'image/logo-image.png' %" alt="" />
-	</div>
+    <!-- Header -->
+<header class="masthead">
 	<div class="container">
-		<div class="row">
-			<div class="span12">
-				<div id="main-flexslider" class="flexslider">
-					<ul class="slides">
-						<li>
-						<p class="home-slide-content">
-							<strong>creative</strong> and passion
-						</p>
-						</li>
-						<li>
-						<p class="home-slide-content">
-							Eat and drink <strong>design</strong>
-						</p>
-						</li>
-						<li>
-						<p class="home-slide-content">
-							We loves <strong>simplicity</strong>
-						</p>
-						</li>
-					</ul>
-				</div>
-				<!-- end slider -->
-			</div>
-		</div>
-	</div>
-	</header>
-</div>
+        <div class="intro-text">
+               <div class="intro-lead-in">For Konkuk!</div>
+                <div class="intro-heading">It's Nice To Meet Yous</div>
+                <a href="#services" class="btn btn-xl">Tell Me More</a>
+        </div>
+    </div>
+</header>
 {% endblock %}

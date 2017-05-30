@@ -1,35 +1,46 @@
+{% load staticfiles %}
+
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>KU환학생</title>
-        <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
-    <style>
-      #map {
-        width: 30%;
-        height: 30%;
-        background-color: grey;
-      }
-    </style>
-  </head>
 
-  <body>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
+
+    <!-- Temporary navbar container fix -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+    
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+
+<body>
+  
   <div class="navbar-wrapper">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <ul class="nav nav-tabs">
@@ -62,16 +73,65 @@
         </li>
       </ul>
       </div>
-    </div>
-    
-    <div class="container">        
+    </div>  
+  
+
+    <!-- Navigation -->
+  <!--<div class="main-navbar"></div>-->
+  <!--  <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse" id="mainNav">-->
+  <!--      <div class="container">-->
+  <!--          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+  <!--              Menu <i class="fa fa-bars"></i>-->
+  <!--          </button>-->
+  <!--          <a class="navbar-brand" href="#">KU환학생</a>-->
+  <!--          <div class="collapse navbar-collapse" id="navbarResponsive">-->
+  <!--              <ul class="navbar-nav ml-auto">-->
+  <!--                  <li class="nav-item">-->
+  <!--                      <a class="nav-link" href="{% url 'inform_index' %}">Inform</a>-->
+  <!--                  </li>-->
+  <!--                  <li class="nav-item">-->
+  <!--                      <a class="nav-link" href="{% url 'post_list' %}">Board</a>-->
+  <!--                  </li>-->
+  <!--                  <li class="nav-item ">-->
+  <!--                      <a class="nav-link" href="{% url 'schedule_index' %}">Schedule</a>-->
+  <!--                  </li>-->
+  <!--                  <li class="nav-item dropdown">-->
+  <!--                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MY</a>-->
+  <!--                      <div class="dropdown-menu" aria-labelledby="dropdown01">-->
+  <!--                        {% if user.is_authenticated %}                  -->
+  <!--                          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>-->
+  <!--                          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>-->
+  <!--                        {% else %}-->
+  <!--                          <a class="dropdown-item" href="{% url 'login' %}">Login</a>-->
+  <!--                          <a class="dropdown-item" href="{% url 'register' %}">Register</a>-->
+  <!--                        {% endif %}-->
+  <!--                      </div>-->
+  <!--                  </li>-->
+  <!--              </ul>-->
+  <!--          </div>-->
+  <!--      </div>-->
+  <!--  </nav>-->
+  <!--</div>-->
+
       {% block content %}
       {% endblock content %}
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-  </body>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/tether/tether.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/agency.min.js' %}"></script>
+
+</body>
+
 </html>
