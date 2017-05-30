@@ -17,14 +17,34 @@
 
 <div class="inform-list">
     <h3>파견국가(2017학년도 1학기 기준)</h3>
-    <ul>
-        <li><a href="nation1/">미주권</a> : 8개 대학</li>
-        <li><a href="nation2/">유럽권</a> : 46개 대학</li>
-        <li><a href="nation3/">호주</a> : 2개 대학</li>
-        <li><a href="nation4/">일본</a> : 13개 대학</li>
-        <li><a href="nation5/">중국어권</a> : 84개 대학</li>
-        <li><a href="nation6/">기타 아시아권</a> :5개 대학</li>
-    </ul>
+    <form id="form-id" method="post">
+        <ul>
+            <li>
+                <input type="hidden" value="100" name="var"/>
+                <a href="100/" onclick="document.getElementById('form-id').submit();">미주권</a> : 8개 대학
+            </li>
+            <li>
+                <input type="hidden" value="200" name="var"/>
+                <a href="200/" onclick="document.getElementById('form-id').submit();">유럽권</a> : 46개 대학
+            </li>
+            <li>
+                <input type="hidden" value="300" name="var"/>
+                <a href="300/" onclick="document.getElementById('form-id').submit();">호주</a> : 2개 대학
+            </li>
+            <li>
+                <input type="hidden" value="400" name="var"/>
+                <a href="400/" onclick="document.getElementById('form-id').submit();">일본</a> : 13개 대학
+            </li>
+            <li>
+                <input type="hidden" value="500" name="var"/>
+                <a href="500/" onclick="document.getElementById('form-id').submit();">중국어권</a> : 84개 대학
+            </li>
+            <li>
+                <input type="hidden" value="600" name="var"/>
+                <a href="600/" onclick="document.getElementById('form-id').submit();">기타 아시아권</a> : 5개 대학
+            </li>
+        </ul>
+    </form>
 </div>
 
 <div class="inform-text">

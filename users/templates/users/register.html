@@ -19,6 +19,16 @@
             </div>
             
             <div class="form-group">
+                <label class="col-sm-3 control-label">E-Mail</label>
+                <div class="col-sm-6">
+                    {{ registerform.email }}
+                    <span class="field-error">
+                    {{ registerform.email.errors|striptags }}
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
                 <label class="col-sm-3 control-label">Password</label>
                 <div class="col-sm-6">
                     {{ registerform.password1 }}

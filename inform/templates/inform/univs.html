@@ -1,7 +1,55 @@
 {% extends "main.html" %}
 
 {% block content %}
+<div class="inform_title">
+    <h1>파견학교정보</h1>
+    <a href="../">상위링크</a>
+    <br/>
+</div>
 
-<h1>도현님이 맡으신 정보 기능 입니다?!?wqrwqr!?!</h1>
+{% for datum in data %}
+    <h1><img src="{{ datum.uni_logo }}" width="100" height="100">{{ datum.uni_name }}</h1>
+    <div class="inform_map" id="map" style="float: left; margin-right: 10px;">
+    <script>
+    function initMap() {
+        var loc = {{ datum.uni_map }};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: loc
+        });
+        var marker = new google.maps.Marker({
+          position: loc,
+          map: map
+        });
+    }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1nft7nPUaWby9B8u8UlL1iZjQ20_5tq8&callback=initMap">
+    </script>
+    </div>
+    
+    <div class="inform_table" style="float: left;">
+        <table border="3" width="110%" height="30%">
+            <tr>
+                <th>주소</th>
+                <td>{{ datum.uni_address }}</td>
+            </tr>
+            <tr>
+                <th>링크</th>
+                <td><a href="{{ datum.uni_site }}">{{ datum.uni_site }}</a></td>
+            </tr>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="inform_title">
+        <br/>
+        <h3>기타 / 비고</h3>
+    </div>
+    <div class="inform_text">
+        <p>{{ datum.uni_etc }}</p>
+    </div>
+{% endfor %}
 
 {% endblock %}

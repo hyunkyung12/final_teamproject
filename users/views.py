@@ -37,6 +37,9 @@ def register_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.is_active = False
+            email = form.cleaned_data
+            user.email = email['email']
             user.save()
 
             return HttpResponseRedirect('/')

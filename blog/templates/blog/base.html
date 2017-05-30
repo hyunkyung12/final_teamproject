@@ -1,3 +1,6 @@
+{% extends "main.html" %}
+
+
 {% load staticfiles %}
 <html>
     <head>
@@ -9,15 +12,20 @@
     </head>
     
     <body>
-       {% if user.is_authenticated %}
+        
+    {% if user.is_authenticated %}
     <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+
     {% endif %}
+     
     
     <div class="page-header">
         <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         <h1><a href="/"> board </board></a></h1>
     </div>
+   
+    
     
     <div class="content container">
         <div class="row">

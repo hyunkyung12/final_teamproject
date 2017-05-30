@@ -35,6 +35,17 @@ class RegisterForm(UserCreationForm):
         )
     )
     
+    email = forms.EmailField(
+        label = 'Email',
+        widget = forms.EmailInput(
+            attrs = {
+                'class': 'form-control',
+                'placeholder': 'E-Mail',
+                'required': 'True',
+            }
+        )
+    )
+    
     password1 = forms.CharField(
         label = 'Password',
         widget = forms.PasswordInput(

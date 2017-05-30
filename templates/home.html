@@ -1,31 +1,38 @@
 {% extends "main.html" %} 
- 
-{% block content %} 
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>교환학생을 위한 사이트</h1>
-        <p class="lead">건국대학교 만세</p>
-        <p><a class="btn btn-lg btn-success" href="{% url 'register' %}" role="button">가입하기</a></p>
-      </div>
+{% load staticfiles %}
 
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>Inform</h2>
-          <p><a class="btn btn-primary" href="{% url 'inform_index' %}" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>Board</h2>
-          <p><a class="btn btn-primary" href="{% url 'board_index' %}" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-lg-4">
-          <h2>Schedule</h2>
-          <p><a class="btn btn-primary" href="{% url 'schedule_index' %}" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
-
-      <!-- Site footer -->
-      <footer class="footer">
-        <p>&copy; 2017_1 창공설 7조</p>
-      </footer>
+{% block content %}
+<div id="header-wrapper" class="header-slider">
+	<header class="clearfix">
+	<div class="logo">
+		<img src="{% static 'image/logo-image.png' %" alt="" />
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div id="main-flexslider" class="flexslider">
+					<ul class="slides">
+						<li>
+						<p class="home-slide-content">
+							<strong>creative</strong> and passion
+						</p>
+						</li>
+						<li>
+						<p class="home-slide-content">
+							Eat and drink <strong>design</strong>
+						</p>
+						</li>
+						<li>
+						<p class="home-slide-content">
+							We loves <strong>simplicity</strong>
+						</p>
+						</li>
+					</ul>
+				</div>
+				<!-- end slider -->
+			</div>
+		</div>
+	</div>
+	</header>
+</div>
 {% endblock %}

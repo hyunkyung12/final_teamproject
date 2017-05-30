@@ -1,16 +1,17 @@
 {% extends "main.html" %}
 
 {% block content %}
-<a href="../">상위링크</a>
 
 <div class="inform-title">
     <h1>파견학교목록</h1>
+    <a href="../">상위링크</a>
+    <br/>
 </div>
 
 <div class="inform-text">
     <h3>대상학교</h3>
     <div class="inform-table">
-        <table>
+        <table border="3" width="90%">
         {% for datum in data %}
             <thead>
                 <tr>
@@ -38,7 +39,11 @@
                     <td>{{ datum.uni_location }}</td>
                     {% endif %}
                     
-                    <td><a href="{{ datum.uni_number }}/">{{ datum.uni_name }}</a></td>
+                    <form id="form-id" method="post">
+                        <input type="hidden" value="{{ datum.uni_number }}" name="var"/>
+                        <td><a href="{{ datum.uni_number }}/" onclick="document.getElementById('form-id').submit();">{{ datum.uni_name }}</a></td>
+                    </form>
+                    
                     <td>{{ datum.uni_language }}</td>
                     <td>{{ datum.uni_people }}</td>
                     <td>{{ datum.uni_term }}</td>
@@ -50,6 +55,7 @@
 </div>
 
 <div class="inform-text">
+    <br/>
     <h3>모집요강</h3>
 </div>
 {% endblock %}
