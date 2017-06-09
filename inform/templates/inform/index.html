@@ -1,56 +1,213 @@
-{% extends "main.html" %}
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Theme Region">
+   	<meta name="description" content="">
 
-{% block content %}
-<div class="inform-title">
-    <h1>교환학생 프로그램</h1>
-</div>
+    <title>KU환학생</title>
+    
+    {% load staticfiles %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/icofont.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/slidr.css' %}">     
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">  
+	<link id="preset" rel="stylesheet" href="{% static 'css/presets/preset1.css' %}">	
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+	
+	<!-- font -->
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,300,600,700' rel='stylesheet' type='text/css'>
 
-<div class="inform-text">
-    <h3>개요</h3>
-    <ul>
-        <li>
-해외파견 프로그램이란 본교와 자매결연이 체결된 외국대학 및 기관에 일정기간 파견되어 취득한 학점을 본교에서 인정받는 프로그램으로 2016년 4월 현재 60개국 436개 대학 및 기관과 자매결연을 체결하고 있음</li>
-        <li>
-본교와 교환학생 교류협정을 체결한 자매대학에 상호교환의 조건으로 일정기간 파견되어 취득한 학점을 본교 학점으로 인정 받는 프로그램(자매대학 Tuition 면제)</li>
-    </ul>
-</div>
+	<!-- icons -->
+	<link rel="icon" href="images/ico/favicon.ico">	
+    <link rel="apple-touch-icon" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <!-- icons -->
 
-<div class="inform-list">
-    <h3>파견국가(2017학년도 1학기 기준)</h3>
-    <form id="form-id" method="post">
-        <ul>
-            <li>
-                <input type="hidden" value="100" name="var"/>
-                <a href="100/" onclick="document.getElementById('form-id').submit();">미주권</a> : 8개 대학
-            </li>
-            <li>
-                <input type="hidden" value="200" name="var"/>
-                <a href="200/" onclick="document.getElementById('form-id').submit();">유럽권</a> : 46개 대학
-            </li>
-            <li>
-                <input type="hidden" value="300" name="var"/>
-                <a href="300/" onclick="document.getElementById('form-id').submit();">호주</a> : 2개 대학
-            </li>
-            <li>
-                <input type="hidden" value="400" name="var"/>
-                <a href="400/" onclick="document.getElementById('form-id').submit();">일본</a> : 13개 대학
-            </li>
-            <li>
-                <input type="hidden" value="500" name="var"/>
-                <a href="500/" onclick="document.getElementById('form-id').submit();">중국어권</a> : 84개 대학
-            </li>
-            <li>
-                <input type="hidden" value="600" name="var"/>
-                <a href="600/" onclick="document.getElementById('form-id').submit();">기타 아시아권</a> : 5개 대학
-            </li>
-        </ul>
-    </form>
-</div>
+    <!-- HTML5 shim and Respond.js %} for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js %} doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js %}"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js %}"></script>
+    <![endif]-->
+    <!-- Template Developed By ThemeRegion -->
+  </head>
+  <body>
+	<!-- header -->
+	<header id="header" class="clearfix">
+		<!-- navbar -->
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<!-- navbar-header -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand"><img class="img-responsive" src="{% static 'images/mainlogo.png' %}" alt="Logo"></a>
+				</div>
+				<!-- /navbar-header -->
+				
+				<div class="navbar-left">
+					<div class="collapse navbar-collapse" id="navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="{% url 'main_view' %}">Home</a></li>
+							<li><a href="{% url 'inform_index' %}">Inform</a></li>
+							<li><a href="{% url 'schedule_index' %}">Schedule</a></li>
+							<li><a href="{% url 'post_list' %}">Board</a></li> 
+							<li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Pages<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="{% url 'profile' %}">Profile</a></li>
+									<li><a href="{% url 'register' %}">Signup</a></li>
+									<li><a href="{% url 'login' %}">Signin</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div><!-- navbar-left -->
+				
+				<!-- nav-right -->
+				<div class="nav-right">				
+					<ul class="sign-in">
+						<li><i class="fa fa-user"></i></li>
+						<li><a href="{% url 'login' %}">Sign In</a></li>
+						<li><a href="{% url 'register' %}">Register</a></li>
+					</ul><!-- sign-in -->					
 
-<div class="inform-text">
-    <h3>공통정보 / 유의사항</h3>
-    <ul>
-        <li>ㅁㄴ이ㅏ러ㅓㄴㅇㅁㄹ</li>
-    </ul>
-</div>
-{% endblock %}
+					<a href="{% url 'post_new' %}" class="btn">Post Your Review!</a>
+				</div>
+				<!-- nav-right -->
+			</div><!-- container -->
+		</nav><!-- navbar -->
+	</header><!-- header -->
+
+	<section class=" job">
+		<div class="container">
+				<h2 class="title">교환학생 프로그램</h2>
+			<div class="resume-content">
+
+				<div class="career-objective section">
+			        <div class="icons">
+			            <i class="fa fa-black-tie" aria-hidden="true"></i>
+			        </div>   
+			        <div class="career-info">
+			        	<h3>개요</h3>
+                           <ul>
+                                <li>
+                        해외파견 프로그램이란 본교와 자매결연이 체결된 외국대학 및 기관에 일정기간 파견되어 취득한 학점을 본교에서 인정받는 프로그램으로 2016년 4월 현재 60개국 436개 대학 및 기관과 자매결연을 체결하고 있음</li>
+                                <li>
+                        본교와 교환학생 교류협정을 체결한 자매대학에 상호교환의 조건으로 일정기간 파견되어 취득한 학점을 본교 학점으로 인정 받는 프로그램(자매대학 Tuition 면제)</li>
+                            </ul>
+			        </div>                                 
+				</div><!-- career-objective -->
+
+				<div class="work-history section">
+			        <div class="icons">
+			            <i class="fa fa-briefcase" aria-hidden="true"></i>
+			        </div>   
+			        <div class="work-info">
+                        <h3>파견국가(2017학년도 1학기 기준) 및 지원자격</h3>
+                        <form id="form-id" method="post">
+                            <ul>
+                                <li>
+                                    <input type="hidden" value="100" name="var"/>
+                                    <a href="100/" onclick="document.getElementById('form-id').submit();">미주권</a> : 8개 대학 / TOEFL iBT 80점 이상
+                                </li>
+                                <li>
+                                    <input type="hidden" value="200" name="var"/>
+                                    <a href="200/" onclick="document.getElementById('form-id').submit();">유럽권</a> : 46개 대학 / 상대교에서 정한 일정수준 이상의 어학능력
+                                </li>
+                                <li>
+                                    <input type="hidden" value="300" name="var"/>
+                                    <a href="300/" onclick="document.getElementById('form-id').submit();">호주</a> : 2개 대학 / IELTS 6.0 또는 TOEFL iBT 80 이상
+                                    <p>IELTS 6.0 : minimum of 5.5 in all subject / TOEFL iBT 80 : minimum Writing/Speaking score of 20</p>
+                                </li>
+                                <li>
+                                    <input type="hidden" value="400" name="var"/>
+                                    <a href="400/" onclick="document.getElementById('form-id').submit();">일본</a> : 13개 대학 / 상대교에서 정한 일정수준 이상의 어학능력
+                                </li>
+                                <li>
+                                    <input type="hidden" value="500" name="var"/>
+                                    <a href="500/" onclick="document.getElementById('form-id').submit();">중국어권</a> : 84개 대학 / 新HSK 5급 이상
+                                    <p>전공과목으로 영어강의 수강 가능 대학에 한하여 TOEIC 750 또는 TOEFL iBT 80 이상</p>
+                                </li>
+                                <li>
+                                    <input type="hidden" value="600" name="var"/>
+                                    <a href="600/" onclick="document.getElementById('form-id').submit();">기타 아시아권</a> : 5개 대학 / IELTS 6.0 또는 TOEFL iBT 80 이상
+                                    <p>일부 대학은 TOEIC 점수 인정</p>
+                                </li>
+                            </ul>
+                        </form>
+			        </div>                                 
+				</div><!-- work-history -->
+
+				<div class="educational-background section">
+					<div class="icons">
+					    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+					</div>	
+					<div class="educational-info">
+                        <h3>공통조건 / 유의사항</h3>
+                        <ul>
+                            <li>
+                                <p>파견 시점 본교 수료학기 2~6학기인 재학생 및 휴학생</p>
+                                <p>(7학기 재학생은 중간고사 전 휴학시 지원가능)</p>
+                                <p>(8학기는 반드시 본교에서 수학해야 함)</p>
+                            </li>
+                            
+                            <li>파견자는 수학기간 동안 본교에 등록해야 함</li>
+                            
+                            <li>
+                                <p>유학생, 조기졸업신청자는 지원 불가</p>
+                                <p>(조기졸업 대상자도 지원 가능하나 교환학생 파견될 경우 조기졸업 대상에서 제외)</p>
+                                <p>(교원자격증 신청자는 별도 상담 필요)</p>
+                            </li>
+                            
+                            <li>재학기간 총 평점이 3.0/4.5 이상인 학생</li>
+                            <li>상대교의 학과가 본교 전공과 같거나 유사하도록 권장</li>
+                            
+                            <li>
+                                <p>같은 학기에 국제처에서 운영하는 타 프로그램에 동시지원 불가</p>
+                                <p>(뉴프런티어 및 해외봉사활동에 동시지원 불가)</p>
+                            </li>
+                            
+                            <li>비자발급 / 해외여행에 결격사유가 없는 학생</li>
+                            <li>지원 시점으로부터 파견 직전까지 국내에서 면접, OT등 주요 일정에 필참할 수 있는 학생</li>
+                        </ul>
+					</div>				
+				</div><!-- educational-background -->
+
+				<div class="educational-background section">
+					<div class="icons">
+					    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+					</div>	
+					<div class="educational-info">
+                        <h3>학점인정</h3>
+                        <ul>
+                            <li>성적은 평점에 산정되지 않고 졸업이수학점에만 포함됨</li>
+                            <li>주임교수의 판단에 따라 승인 후 전공선택, 일반선택으로 인정 받을 수 있음</li>
+                            <li>상대교에서의 취득학점이 백분율 기준 원점수 60점미만일 경우 학점인정 불가</li>
+                            <li>수학기간 동안 매 학기 2과목 이상의 전공과목을 이수하는 것을 원칙으로 함</li>
+                            <li>한 학기 최소 12학점 이상을 이수해야 함</li>
+                            <li>학칙 제 26조에서 정한 학기당 취득학점 범위까지 인정</li>
+                            <li>파견기간 동안 본교 인터넷 강의 수강 불가</li>
+                        </ul>
+					</div>				
+				</div><!-- educational-background -->
+
+				<div class="declaration section">
+                    <p>이하 자세한 내용은 <a target="_blank" href="http://abroad.konkuk.ac.kr/">국제처</a> 홈페이지 참조</p>             
+				</div><!-- career-objective -->									
+
+			</div><!-- resume-content -->						
+		</div><!-- container -->
+	</section><!-- ad-profile-page -->
+  </body>
+</html>

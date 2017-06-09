@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
-
+from blog.models import *
 from .models import User
 from .forms import LoginForm, RegisterForm
-
+from django.views.decorators.csrf import ensure_csrf_cookie
+@ensure_csrf_cookie
 
 def login_view(request):
     form = LoginForm()
@@ -54,6 +55,7 @@ def profile_view(request):
         context = {
             'username': user.username,
             'active': user.is_active,
+            'my_post': Post.objects.filter(author=user),
         }
 
     return render(request, 'users/profile.html', context)

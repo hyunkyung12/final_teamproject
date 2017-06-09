@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -69,6 +70,16 @@ class RegisterForm(UserCreationForm):
         help_text = "Enter the same password as above"
     )
     
+    myuniv = forms.CharField(
+        label='myuniv',
+        widget = forms.TextInput(
+            attrs = {
+                'class': 'form-control',
+                'placeholder': '관심대학을 입력해주세요',
+            }
+        )
+    )
+    
     class Meta:
         model = User
-        fields = ("username", "password1", "password2")
+        fields = ("username", "password1", "password2", "myuniv")
