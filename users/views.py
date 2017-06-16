@@ -3,12 +3,15 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from blog.models import *
-from .models import User
-from .forms import LoginForm, RegisterForm
 from django.views.decorators.csrf import ensure_csrf_cookie
-@ensure_csrf_cookie
+from django.contrib.auth.models import User
 
+from blog.models import *
+
+'''
+from .forms import LoginForm, RegisterForm
+
+@ensure_csrf_cookie
 def login_view(request):
     form = LoginForm()
 
@@ -38,7 +41,7 @@ def register_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = True
+            user.is_active = False
             email = form.cleaned_data
             user.email = email['email']
             user.save()
@@ -46,6 +49,7 @@ def register_view(request):
             return HttpResponseRedirect('/')
 
     return render(request, 'users/register.html', {'registerform': form})
+'''
 
 @login_required
 def profile_view(request):
@@ -59,4 +63,3 @@ def profile_view(request):
         }
 
     return render(request, 'users/profile.html', context)
-    
