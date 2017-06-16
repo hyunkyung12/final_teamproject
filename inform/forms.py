@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import EtcMod
+from inform.models import EtcMod
 
 class ModForm(forms.ModelForm):
     

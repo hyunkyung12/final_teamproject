@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Univs, EtcMod
+from inform.models import Univs, EtcMod
 
 class UnivsAdminDisplay(admin.ModelAdmin):
     list_display = ('uni_number', 'uni_name')

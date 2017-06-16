@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils import timezone
-from users.models import *
 
 class Univs(models.Model):
     uni_number = models.CharField(max_length=6)
@@ -32,6 +31,9 @@ class Univs(models.Model):
     uni_qualification = models.TextField(blank=True)
     #uni_etc = models.TextField(blank=True)
     
+    def __str__(self):
+        return str(self.uni_name)
+    
 
 class EtcMod(models.Model):
     school_id = models.IntegerField()
@@ -43,3 +45,5 @@ class EtcMod(models.Model):
         self.created_date = timezone.now()
         self.save()
     
+    def __str__(self):
+        return str(sel.author)
