@@ -66,9 +66,13 @@
 							<li><a href="{% url 'post_list' %}">Board</a></li> 
 							<li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Pages<span class="caret"></span></a>
 								<ul class="dropdown-menu">
+									{% if user.is_authenticated %}
 									<li><a href="{% url 'profile' %}">Profile</a></li>
-									<li><a href="{% url 'registration_register' %}">Signup</a></li>
-									<li><a href="{% url 'auth_login' %}">Signin</a></li>
+									<li><a href="{% url 'auth_logout' %}">Logout</a></li>
+									{% else %}
+									<li><a href="{% url 'auth_login' %}">Login</a></li>
+									<li><a href="{% url 'registration_register' %}">Register</a></li>
+									{% endif %}
 								</ul>
 							</li>
 						</ul>
@@ -79,8 +83,13 @@
 				<div class="nav-right">				
 					<ul class="sign-in">
 						<li><i class="fa fa-user"></i></li>
-						<li><a href="{% url 'auth_login' %}">Signin</a></li>
+						{% if user.is_authenticated %}
+						<li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+						<li><a href="{% url 'auth_logout' %}">Logout</a></a></li>
+						{% else %}
+						<li><a href="{% url 'auth_login' %}">Login</a></li>
 						<li><a href="{% url 'registration_register' %}">Register</a></li>
+						{% endif %}
 					</ul><!-- sign-in -->					
 
 					<a href="{% url 'post_new' %}" class="btn">Post Your Review!</a>
