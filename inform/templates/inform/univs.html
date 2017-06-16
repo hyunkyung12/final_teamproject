@@ -1,173 +1,80 @@
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Theme Region">
-   	<meta name="description" content="">
+{% extends 'inform/base.html' %}
 
-    <title>KU환학생</title>
+{% block inside %}
+    <div class="container">
     
-    {% load staticfiles %}
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/icofont.css' %}"> 
-    <link rel="stylesheet" href="{% static 'css/slidr.css' %}">     
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">  
-	<link id="preset" rel="stylesheet" href="{% static 'css/presets/preset1.css' %}">	
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-	
-	<!-- font -->
-	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,300,600,700' rel='stylesheet' type='text/css'>
-
-	<!-- icons -->
-	<link rel="icon" href="images/ico/favicon.ico">	
-    <link rel="apple-touch-icon" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="images/ico/apple-touch-icon-57-precomposed.png">
-    <!-- icons -->
-
-    <!-- HTML5 shim and Respond.js %} for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js %} doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js %}"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js %}"></script>
-    <![endif]-->
-    <!-- Template Developed By ThemeRegion -->
-     
-        <style>
-                #map {
-                    width: 100%;
-                    height: 30%;
-                    background-color: grey;
-                }
-        </style>
-  </head>
-  
-  <body>
-	<!-- header -->
-	<header id="header" class="clearfix">
-		<!-- navbar -->
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<!-- navbar-header -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand"><img class="img-responsive" src="{% static 'images/mainlogo.png' %}" alt="Logo"></a>
-				</div>
-				<!-- /navbar-header -->
-				
-				<div class="navbar-left">
-					<div class="collapse navbar-collapse" id="navbar-collapse">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="{% url 'main_view' %}">Home</a></li>
-							<li><a href="{% url 'inform_index' %}">Inform</a></li>
-							<li><a href="{% url 'schedule_index' %}">Schedule</a></li>
-							<li><a href="{% url 'post_list' %}">Board</a></li> 
-							<li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Pages<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="{% url 'profile' %}">Profile</a></li>
-									<li><a href="{% url 'register' %}">Signup</a></li>
-									<li><a href="{% url 'login' %}">Signin</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div><!-- navbar-left -->
-				
-				<!-- nav-right -->
-				<div class="nav-right">				
-					<ul class="sign-in">
-						<li><i class="fa fa-user"></i></li>
-						<li><a href="{% url 'login' %}">Sign In</a></li>
-						<li><a href="{% url 'register' %}">Register</a></li>
-					</ul><!-- sign-in -->					
-
-					<a href="{% url 'post_new' %}" class="btn">Post Your Review!</a>
-				</div>
-				<!-- nav-right -->
-			</div><!-- container -->
-		</nav><!-- navbar -->
-	</header><!-- header -->
-            	
-    <section class="job">        	
-        <div class="container">
-    
-        <h2 class="title">파견학교정보</h2>
-        <a href="../">상위링크</a><hr>
+        <h2 class="page_header">학교상세정보</h2>
+        <a href="../">뒤로</a><hr>
         
-            {% for datum in data %}
-            <div class="special-qualification: section">
-                <div class="qualification">
-                    <h2><img src="{{ datum.uni_logo }}" width="100" height="100">{{ datum.uni_name }}</h2>
+        {% for datum in data %}
+        <div class="special-qualification: section">
+            <div class="qualification">
+                <h2><img src="{{ datum.uni_logo }}" width="100" height="100">{{ datum.uni_name }}</h2>
                     
-                    <div class="inform_map" id="map" style="float: left; margin-right: 10px;">
+                <div class="inform_map" id="map" style="float: left; margin-right: 10px;">
                     <script>
-                    function initMap() {
-                        var loc = {{ datum.uni_map }};
-                        var map = new google.maps.Map(document.getElementById('map'), {
-                          zoom: 17,
-                          center: loc
-                        });
-                        var marker = new google.maps.Marker({
-                          position: loc,
-                          map: map
-                        });
-                    }
+                        function initMap() {
+                            var loc = {{ datum.uni_map }};
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                              zoom: 17,
+                              center: loc
+                            });
+                            var marker = new google.maps.Marker({
+                              position: loc,
+                              map: map
+                            });
+                        }
                     </script>
                     <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1nft7nPUaWby9B8u8UlL1iZjQ20_5tq8&callback=initMap">
                     </script>
-                    </div>
-                    
-                    <div style="float: left;">
-                        <table class="table table-striped" width="100%" height="30%">
-                            <tr>
-                                <th>주소</th>
-                                <td>{{ datum.uni_address }}</td>
-                            </tr>
-                            <tr>
-                                <th>링크</th>
-                                <td><a target="_black" href="{{ datum.uni_site }}">{{ datum.uni_site }}</a></td>
-                            </tr>
-                            {% if datum.uni_qualification %}
-                            <tr>
-                                <th>파견조건</th>
-                                <td>{{ datum.uni_qualification }}</td>
-                            </tr>
-                            {% endif %}
-                        </table>
-                    </div>
-                    <div style="clear:both;"></div>
                 </div>
-            </div>    
-            
-            <div class="special-qualification: section">
-                <div class="qualification">
-                    {% if datum.uni_major %}
-                    <div class="inform_text">
-                        <br/>
-                        <h3>주요전공</h3>
-                        <p>{{ datum.uni_major }}</p>
-                    </div>
-                    {% endif %}
                     
-                    <div class="inform_text">
-                        <br/>
-                        <h3>기타 / 비고</h3>
-                        <p>{{ datum.uni_etc }}</p>
-                    </div>
+                <div style="float: left;">
+                    <br/>
+                    <table class="table table-hover" width="100%" height="30%">
+                        <tr>
+                            <th>주소</th>
+                            <td>{{ datum.uni_address }}</td>
+                        </tr>
+                        <tr>
+                            <th>링크</th>
+                            <td><a target="_black" href="{{ datum.uni_site }}">{{ datum.uni_site }}</a></td>
+                        </tr>
+                        {% if datum.uni_qualification %}
+                        <tr>
+                            <th>파견조건</th>
+                            <td>{{ datum.uni_qualification }}</td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                </div>
+                
+                <div style="clear:both;"></div>
+            </div>
+        </div>    
+            
+        <div class="special-qualification: section">
+            <div class="qualification">
+                {% if datum.uni_major %}
+                <div class="inform_text">
+                    <br/>
+                    <h3>주요전공</h3>
+                    <p>{{ datum.uni_major }}</p>
+                </div>
+                {% endif %}
+                
+                <div class="inform_text">
+                    <br/>
+                    <h3>기타 / 비고<small>(<a href="./mod/">수정</a> / <a href="./log/">로그</a>)</small></h3>
+                    {% for etcs in etc|slice:":1" %}
+                    <p>({{ etcs.author }}에 의해 마지막으로 수정됨, {{ etcs.created_date }})</p>
+                    <br/>
+                    <pre>{{ etcs.text }}</pre>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}    
-        </section>
-    </body>
-</html>
+        </div>
+        {% endfor %}    
+{% endblock %}  
+    
