@@ -1,0 +1,19 @@
+{% extends 'inform/base.html' %}
+{% block inside %}
+    <div class="container">
+        
+        <h2 class="page_header">기타 / 비고 히스토리</h2>
+        <a href="../">뒤로</a><hr>
+        
+        {% for datum in data %}
+        <div class="special-qualification: section">
+            <div class="qualification">
+                <p>{{ datum.created_date }}</p>
+                <p>{{ datum.author }}</p>
+                <pre>{{ datum.text }}</pre>
+                <br/>
+            </div>    
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

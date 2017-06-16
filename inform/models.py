@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils import timezone
+from users.models import *
 
 class Univs(models.Model):
     uni_number = models.CharField(max_length=6)
@@ -22,10 +24,22 @@ class Univs(models.Model):
     # URL필드의 존재를 몰랐습니다. 고치겠습니다.
     uni_address = models.TextField(blank=True)
     
-    uni_found = models.TextField(blank=True)
-    uni_area = models.TextField(blank=True)
-    uni_nos = models.TextField(blank=True)
+    #uni_found = models.TextField(blank=True)
+    #uni_area = models.TextField(blank=True)
+    #uni_nos = models.TextField(blank=True)
     
     uni_major = models.TextField(blank=True)
     uni_qualification = models.TextField(blank=True)
-    uni_etc = models.TextField(blank=True)
+    #uni_etc = models.TextField(blank=True)
+    
+
+class EtcMod(models.Model):
+    school_id = models.IntegerField()
+    author = models.ForeignKey('auth.User')
+    text = models.TextField()
+    created_date = models.DateTimeField(null=True)
+    
+    def publish(self):
+        self.created_date = timezone.now()
+        self.save()
+    

@@ -1,0 +1,25 @@
+{% extends 'inform/base.html' %}
+
+{% block inside %}
+    <div class="container">
+        
+        <h2 class="page_header">기타 / 비고</h2>
+        <a href="../">뒤로</a><hr>
+        
+        <div class="special-qualification: section">
+            <div class="qualification">
+                <form method="POST" class="post-form" id="inform" onsubmit="insertBR(); return false">{% csrf_token %}
+                    
+                    <div class="inform_textarea">
+                        <textarea name="text" form="inform" style="resize:both; width:100%;" rows=20 autofocus required wrap=hard>
+                        {% for datum in data|slice:":1" %}
+                        {{ datum.text }}
+                        {% endfor %}
+                        </textarea>
+                    </div>
+                    <button type="submit" class="save btn btn-default" onclick="insertBR()">수정</button>
+                </form>
+            </div>    
+        </div>
+    </div>
+{% endblock %}

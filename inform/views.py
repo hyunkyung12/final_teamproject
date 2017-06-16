@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
-from .models import Univs
+from django.shortcuts import render, redirect
+from .models import Univs, EtcMod
+from .forms import ModForm
+from django.utils import timezone
 
 def index(request):
     return render(request, 'inform/index.html')
@@ -30,5 +32,31 @@ def detail(request, uni_number, var):
     if request.method == "POST":
         var = request.POST.get('var', '')
     data = Univs.objects.all().filter(uni_number__exact=var)
-    return render(request, 'inform/univs.html', {'data': data})
+    etc = EtcMod.objects.all().filter(school_id__exact=var).order_by('-created_date')
+    context = {'data': data, 'etc': etc}
+    return render(request, 'inform/univs.html', context=context)
+    
+
+def etcmod(request, a, b):
+    data = EtcMod.objects.all().filter(school_id__exact=b).order_by('-created_date')
+    
+    if request.method == "POST":
+        form = ModForm(request.POST)
+        if form.is_valid():
+            mod = form.save(commit=False)
+            mod.author = request.user
+            mod.school_id = b
+            mod.created_date = timezone.now()
+            mod.save()
+            return render(request, 'inform/univs.html')
+    else:
+        form = ModForm()
+        
+    context = {'form': form, 'data': data}      
+    return render(request, 'inform/etcmod.html', context=context)
+    
+
+def etclog(request, a, b):
+    data = EtcMod.objects.all().filter(school_id__exact=b).order_by('-created_date')
+    return render(request, 'inform/etclog.html', {'data': data})
     

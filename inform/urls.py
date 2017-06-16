@@ -7,4 +7,8 @@ urlpatterns = [
     url(r'^(\d+)/$', views.nation, name='inform_nat'),
     
     url(r'^(\d+)/(\d+)/$', views.detail, name='inform_det'),
+    
+    url(r'^(\d+)/(\d+)/mod/$', views.etcmod, name='inform_mod'),
+    
+    url(r'^(\d+)/(\d+)/log/$', views.etclog, name='inform_log'),
 ]

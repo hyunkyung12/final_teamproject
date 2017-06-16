@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block script %}
+	<style>
+		#map {
+			width: 100%;
+            height: 30%;
+            background-color: grey;
+        }
+    </style>
+        
+    <script type="text/javascript">
+    	function insertBR(){
+        	var textArea = document.getElementById("inform").value;
+        	textArea = textArea.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+<section class="job">
+	{% block inside %}
+	{% endblock %}
+</section>
+{% endblock %}

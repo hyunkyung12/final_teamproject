@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ScheduleConfig(AppConfig):
+class BlogConfig(AppConfig):
     name = 'schedule'

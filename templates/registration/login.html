@@ -1,0 +1,72 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block content %}
+	<section class="clearfix">
+		<div class="container">
+			<div class="row text-center">
+				<!-- user-login -->			
+				<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+					<div class="user-account">
+						<h2>User Login</h2>
+						<!-- form -->
+						<form id="login" class="form-horizontal" method="post" enctype="multipart/form-data" >
+							{% csrf_token %}
+							<div class="form-group">
+                                <label class="col-sm-3 control-label">Id</label>
+                                <div class="col-sm-6">
+                                    {{ form.username }}
+                                    <span class="field-error">
+                                    {{ form.username.errors|striptags }}
+                                </span>
+                            </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-6">
+                                {{ form.password }}
+                                <span class="field-error">
+                                {{ form.password.errors|striptags }}
+                            </span>
+                            </div>
+						</div>
+						<input type="submit" value="{% trans 'Log in' %}" />
+						<!--<button type="submit" class="btn btn-lg">Login</button>-->
+					</form><!-- form -->
+					<p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+				</div><!-- user-login -->		
+			</div><!-- row -->	
+		</div><!-- container -->
+	</section><!-- signin-page -->
+	
+{% endblock%}
+
+{% comment %}
+**registration/login.html**
+
+It's your responsibility to provide the login form in a template called
+registration/login.html by default. This template gets passed four
+template context variables:
+
+``form``
+    A Form object representing the login form. See the forms
+    documentation for more on Form objects.
+
+``next``
+    The URL to redirect to after successful login. This may contain a
+    query string, too.
+
+``site``
+    The current Site, according to the SITE_ID setting. If you don't
+    have the site framework installed, this will be set to an instance
+    of RequestSite, which derives the site name and domain from the
+    current HttpRequest.
+
+``site_name``
+    An alias for site.name. If you don't have the site framework
+    installed, this will be set to the value of
+    request.META['SERVER_NAME']. For more on sites, see The
+    "sites" framework.
+{% endcomment %}

@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>교환학생 일정</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar.css' %}" />
+        <script src="{% static 'jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'moment.js' %}"></script>
+        <script src="{% static 'fullcalendar.js' %}"></script>
+
+
+        <script type="text/javascript">
+                $(document).ready(function() {
+
+                    // page is now ready, initialize the calendar...
+
+                    $('#calendar').fullCalendar({
+
+                       events: [
+                            {
+                                title  : 'event1',
+                                start  : '2017-06-12'
+                            },
+                            {
+                                title  : 'event2',
+                                start  : '2017-06-12',
+                                end    : '2017-06-18'
+                            },
+                            {
+                                title  : 'event3',
+                                start  : '2017-06-20T12:30:00',
+                                allDay : false // will make the time show
+                            }
+                        ]
+                        
+                        
+                    })
+                        
+                });
+            </script>
+        
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">학교별 교환학생 일정</a></h1>
+        </div>
+
+        <div id='calendar'></div>
+        
+    </body>
+</html>
