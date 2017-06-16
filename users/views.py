@@ -10,7 +10,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.models import User
 
 from blog.models import *
-from blog.forms import LoginForm, RegisterForm
+from users.forms import LoginForm, RegisterForm
 
 @ensure_csrf_cookie
 def login_view(request):
