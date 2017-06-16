@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+# 안타깝게도, profile_view를 제외한 view함수들은 이제 사용되지 않아요..
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
@@ -7,9 +10,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.models import User
 
 from blog.models import *
-
-'''
-from .forms import LoginForm, RegisterForm
+from users.forms import LoginForm, RegisterForm
 
 @ensure_csrf_cookie
 def login_view(request):
@@ -49,7 +50,6 @@ def register_view(request):
             return HttpResponseRedirect('/')
 
     return render(request, 'users/register.html', {'registerform': form})
-'''
 
 @login_required
 def profile_view(request):

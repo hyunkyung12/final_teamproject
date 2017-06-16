@@ -24,16 +24,20 @@ def nation(request):
 def nation(request, var):
     if request.method == "POST":
         var = request.POST.get('var', '')
+        
     data = Univs.objects.all().filter(uni_number__contains=var).order_by('uni_number')
+    
     return render(request, 'inform/nations.html', {'data': data})
 
 
 def detail(request, uni_number, var):
     if request.method == "POST":
         var = request.POST.get('var', '')
+        
     data = Univs.objects.all().filter(uni_number__exact=var)
     etc = EtcMod.objects.all().filter(school_id__exact=var).order_by('-created_date')
     context = {'data': data, 'etc': etc}
+    
     return render(request, 'inform/univs.html', context=context)
     
 
@@ -48,15 +52,17 @@ def etcmod(request, a, b):
             mod.school_id = b
             mod.created_date = timezone.now()
             mod.save()
+            
             return render(request, 'inform/univs.html')
     else:
         form = ModForm()
         
-    context = {'form': form, 'data': data}      
+    context = {'form': form, 'data': data}
+    
     return render(request, 'inform/etcmod.html', context=context)
     
 
 def etclog(request, a, b):
     data = EtcMod.objects.all().filter(school_id__exact=b).order_by('-created_date')
-    return render(request, 'inform/etclog.html', {'data': data})
     
+    return render(request, 'inform/etclog.html', {'data': data})

@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-
 from django.db import models
 from django.utils import timezone
-from users.models import *
-
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -25,7 +22,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
-        
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
     author = models.CharField(max_length=200)

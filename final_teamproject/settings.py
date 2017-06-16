@@ -135,16 +135,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
-CSRF_COOKIE_SECURE = True
-
-ACCOUNT_ACTIVATION_DAYS = 7
+ACCOUNT_ACTIVATION_DAYS = 3
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'test@gmail.com'
-#EMAIL_HOST_PASSWORD = os.environ.get('KBOARD_PASSWORD')
-EMAIL_HOST_PASSWORD = 'testtest'
+
+'''
+https://hyesun03.github.io/2016/11/04/djangoregistration/
+참고해서 'EMAIL_HOST_PASSWORD' 및 기타 다른 설정 해주시면 됩니다.
+'''
+
+EMAIL_HOST_USER = 'test@gmail.com'    # Need to change
+
+# Need to change
+EMAIL_HOST_PASSWORD = os.environ.get('KBOARD_PASSWORD')
+#EMAIL_HOST_PASSWORD = 'testtest'
+
 SERVER_EMAIL = 'test@test.com'
 DEFAULT_FROM_MAIL = 'KBoard_Developer'
