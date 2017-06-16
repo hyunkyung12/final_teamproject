@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 from users.models import *
 
-    
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
@@ -13,7 +13,6 @@ class Post(models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
-   
     photo = models.ImageField(blank=True, null=True) 
     
     class Admin:
