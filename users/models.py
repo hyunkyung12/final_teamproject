@@ -7,4 +7,3 @@ class Profile(models.Model):
     
     user = models.OneToOneField(User)
     myuniv = models.CharField(max_length=30, blank=True)
-    
